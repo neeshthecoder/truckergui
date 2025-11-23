@@ -1,0 +1,93 @@
+{
+  "name": "CognitiveSession",
+  "type": "object",
+  "properties": {
+    "operator_id": {
+      "type": "string",
+      "description": "Reference to Operator entity"
+    },
+    "operator_name": {
+      "type": "string",
+      "description": "Operator name for quick reference"
+    },
+    "session_start": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Session start timestamp"
+    },
+    "session_end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Session end timestamp"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "completed",
+        "interrupted"
+      ],
+      "default": "active"
+    },
+    "alertness_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Current alertness level (0-100)"
+    },
+    "focus_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Focus/concentration level (0-100)"
+    },
+    "fatigue_level": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Fatigue level (0-100, higher is more fatigued)"
+    },
+    "reaction_time": {
+      "type": "number",
+      "description": "Average reaction time in milliseconds"
+    },
+    "cognitive_load": {
+      "type": "string",
+      "enum": [
+        "low",
+        "moderate",
+        "high",
+        "critical"
+      ],
+      "description": "Current cognitive load"
+    },
+    "performance_rating": {
+      "type": "string",
+      "enum": [
+        "optimal",
+        "good",
+        "degraded",
+        "critical"
+      ],
+      "description": "Overall performance assessment"
+    },
+    "hours_since_rest": {
+      "type": "number",
+      "description": "Hours since last rest period"
+    },
+    "incident_count": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of incidents during session"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional observations or notes"
+    }
+  },
+  "required": [
+    "operator_id",
+    "operator_name",
+    "session_start"
+  ]
+}

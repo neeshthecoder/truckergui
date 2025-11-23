@@ -1,0 +1,79 @@
+{
+  "name": "Alert",
+  "type": "object",
+  "properties": {
+    "operator_id": {
+      "type": "string",
+      "description": "Reference to Operator entity"
+    },
+    "operator_name": {
+      "type": "string",
+      "description": "Operator name for quick reference"
+    },
+    "session_id": {
+      "type": "string",
+      "description": "Reference to CognitiveSession if applicable"
+    },
+    "alert_type": {
+      "type": "string",
+      "enum": [
+        "fatigue",
+        "low_alertness",
+        "poor_focus",
+        "slow_reaction",
+        "incident",
+        "shift_limit",
+        "performance_degradation"
+      ],
+      "description": "Type of alert"
+    },
+    "severity": {
+      "type": "string",
+      "enum": [
+        "info",
+        "warning",
+        "critical"
+      ],
+      "description": "Alert severity level"
+    },
+    "message": {
+      "type": "string",
+      "description": "Alert message/description"
+    },
+    "metric_value": {
+      "type": "number",
+      "description": "The metric value that triggered alert"
+    },
+    "threshold_value": {
+      "type": "number",
+      "description": "The threshold that was exceeded"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "acknowledged",
+        "resolved"
+      ],
+      "default": "active"
+    },
+    "acknowledged_by": {
+      "type": "string",
+      "description": "User who acknowledged the alert"
+    },
+    "acknowledged_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "resolution_notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "operator_id",
+    "operator_name",
+    "alert_type",
+    "severity",
+    "message"
+  ]
+}

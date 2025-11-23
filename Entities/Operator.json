@@ -1,0 +1,75 @@
+{
+  "name": "Operator",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Full name of the driver"
+    },
+    "employee_id": {
+      "type": "string",
+      "description": "Unique employee identifier"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "long_haul_driver",
+        "regional_driver",
+        "local_driver",
+        "team_driver",
+        "owner_operator",
+        "dispatcher"
+      ],
+      "description": "Driver role"
+    },
+    "department": {
+      "type": "string",
+      "enum": [
+        "long_haul",
+        "regional",
+        "local_delivery",
+        "refrigerated",
+        "hazmat",
+        "flatbed"
+      ],
+      "description": "Fleet division"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "on_break",
+        "off_duty",
+        "on_leave"
+      ],
+      "default": "off_duty",
+      "description": "Current duty status"
+    },
+    "certification_level": {
+      "type": "string",
+      "enum": [
+        "junior",
+        "standard",
+        "senior",
+        "expert"
+      ],
+      "description": "Experience level"
+    },
+    "contact_email": {
+      "type": "string",
+      "format": "email"
+    },
+    "contact_phone": {
+      "type": "string"
+    },
+    "photo_url": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "employee_id",
+    "role",
+    "department"
+  ]
+}
