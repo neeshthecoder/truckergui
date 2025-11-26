@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { base44 } from "@/api/base44Client";
+import { alertsMockApi } from "@/api/alertsMockApi";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -15,21 +15,21 @@ export default function Alerts() {
     queryKey: ['alerts', filter],
     queryFn: () => {
       if (filter === 'all') {
-        return base44.entities.Alert.list('-created_date', 100);
+        return alertsMockApi.filter({}, '-created_date', 100);
       }
-      return base44.entities.Alert.filter({ status: filter }, '-created_date', 100);
+      return alertsMockApi.filter({ status: filter }, '-created_date', 100);
     },
   });
 
   const updateAlertMutation = useMutation({
-    mutationFn: ({ id, data }) => base44.entities.Alert.update(id, data),
+    mutationFn: ({ id, data }) => alertsMockApi.update(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries(['alerts']);
     },
   });
 
   const handleAcknowledge = async (alert) => {
-    const user = await base44.auth.me();
+    const acknowledgedByUser = "GUI_User";
     updateAlertMutation.mutate({
       id: alert.id,
       data: {

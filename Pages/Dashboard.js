@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { base44 } from "@/api/base44Client";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Users, Activity, AlertTriangle, Shield } from "lucide-react";
-
+import { operatorsMockApi } from "@/api/operatorsMockApi"; // Already created in previous step
+import { sessionsMockApi } from "@/api/sessionsMockApi";
+import { alertsMockApi } from "@/api/alertsMockApi";
 import StatusCard from "../Components/dashboard/StatusCard";
 import OperatorStatusGrid from "../Components/dashboard/OperatorStatusGrid";
 import AlertsWidget from "../Components/dashboard/AlertsWidget";
@@ -15,18 +16,19 @@ export default function Dashboard() {
 
   const { data: operators = [] } = useQuery({
     queryKey: ['operators'],
-    queryFn: () => base44.entities.Operator.list(),
+    queryFn: operatorsMockApi.list,
   });
 
   const { data: sessions = [] } = useQuery({
     queryKey: ['sessions'],
-    queryFn: () => base44.entities.CognitiveSession.list('-session_start', 50),
+    queryFn: () => sessionsMockApi.list('-session_start', 50),
   });
 
   const { data: alerts = [] } = useQuery({
     queryKey: ['alerts'],
-    queryFn: () => base44.entities.Alert.filter({ status: 'active' }, '-created_date', 20),
+    queryFn: () => alertsMockApi.filter({ status: 'active' }, '-created_date', 20),
   });
+
 
   const activeSessions = sessions.filter(s => s.status === 'active');
   const activeOperators = operators.filter(o => o.status === 'active');

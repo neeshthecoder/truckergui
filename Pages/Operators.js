@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { base44 } from "@/api/base44Client";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { operatorsMockApi } from "@/api/operatorsMockApi";import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -20,11 +19,12 @@ export default function Operators() {
 
   const { data: operators = [], isLoading } = useQuery({
     queryKey: ['operators'],
-    queryFn: () => base44.entities.Operator.list('-created_date'),
+    queryFn: operatorsMockApi.list,
   });
 
+
   const createOperatorMutation = useMutation({
-    mutationFn: (data) => base44.entities.Operator.create(data),
+    mutationFn: operatorsMockApi.create,
     onSuccess: () => {
       queryClient.invalidateQueries(['operators']);
       setShowForm(false);
@@ -33,7 +33,7 @@ export default function Operators() {
   });
 
   const updateOperatorMutation = useMutation({
-    mutationFn: ({ id, data }) => base44.entities.Operator.update(id, data),
+    mutationFn: ({ id, data }) => operatorsMockApi.update(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries(['operators']);
       setShowForm(false);
@@ -42,12 +42,12 @@ export default function Operators() {
   });
 
   const deleteOperatorMutation = useMutation({
-    mutationFn: (id) => base44.entities.Operator.delete(id),
+    mutationFn: operatorsMockApi.delete,
     onSuccess: () => {
       queryClient.invalidateQueries(['operators']);
     },
   });
-
+  
   const handleSubmit = (data) => {
     if (editingOperator) {
       updateOperatorMutation.mutate({ id: editingOperator.id, data });

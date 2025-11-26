@@ -75,7 +75,7 @@ export default function Layout({ children, currentPageName }) {
           <SidebarHeader className="border-b border-zinc-800 p-4 bg-zinc-900">
             <div className="flex items-center gap-3">
               <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/68eaf6707ff9cdd70f4edffb/22be185da_NeurotechCompanyLogowithAbstractIcon.png"
+                src="/images/axon-logo.png" // Updated path
                 alt="Axon Labs"
                 className="w-10 h-10 object-contain"
               />

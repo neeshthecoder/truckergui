@@ -1,5 +1,6 @@
 import React from "react";
-import { base44 } from "@/api/base44Client";
+import { sessionsMockApi } from "@/api/sessionsMockApi"; 
+import { operatorsMockApi } from "@/api/operatorsMockApi";
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, PieChart, Pie, Cell } from "recharts";
@@ -8,12 +9,12 @@ import { BarChart3, TrendingUp, Users, Lightbulb, FlaskConical, ClipboardList } 
 export default function Analytics() {
   const { data: sessions = [] } = useQuery({
     queryKey: ['sessions'],
-    queryFn: () => base44.entities.CognitiveSession.list('-session_start', 100),
+    queryFn: () => sessionsMockApi.list('-session_start', 100),
   });
 
   const { data: operators = [] } = useQuery({
     queryKey: ['operators'],
-    queryFn: () => base44.entities.Operator.list(),
+    queryFn: operatorsMockApi.list,
   });
 
   const performanceData = [

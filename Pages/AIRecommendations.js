@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { base44 } from "@/api/base44Client";
+import { operatorsMockApi } from "@/api/operatorsMockApi";
+import { sessionsMockApi } from "@/api/sessionsMockApi";
+import { mockLLM } from "@/api/mockAI";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -14,12 +16,12 @@ export default function AIRecommendations() {
 
   const { data: operators = [] } = useQuery({
     queryKey: ['operators'],
-    queryFn: () => base44.entities.Operator.list(),
+    queryFn: operatorsMockApi.list,
   });
 
   const { data: sessions = [] } = useQuery({
     queryKey: ['sessions'],
-    queryFn: () => base44.entities.CognitiveSession.list('-session_start', 50),
+    queryFn: () => sessionsMockApi.list('-session_start', 50),
   });
 
   const activeSessions = sessions.filter(s => s.status === 'active');
@@ -44,7 +46,7 @@ Based on this data, provide 5-7 specific recommendations for optimal route assig
 
 Format each recommendation with a clear action, rationale, and risk level.`;
 
-      const result = await base44.integrations.Core.InvokeLLM({
+      const result = await mockLLM.InvokeLLM({
         prompt,
         response_json_schema: {
           type: "object",
