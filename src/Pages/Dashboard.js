@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "../Components/ui/card";
+import { Badge } from "../Components/ui/badge";
 import { Users, Activity, AlertTriangle, Shield } from "lucide-react";
-import { operatorsMockApi } from "@/api/operatorsMockApi"; // Already created in previous step
-import { sessionsMockApi } from "@/api/sessionsMockApi";
-import { alertsMockApi } from "@/api/alertsMockApi";
+import { operatorsMockApi } from "../api/operatorsMockApi"; // Already created in previous step
+import { sessionsMockApi } from "../api/sessionsMockApi";
+import { alertsMockApi } from "../api/alertsMockApi";
 import StatusCard from "../Components/dashboard/StatusCard";
 import OperatorStatusGrid from "../Components/dashboard/OperatorStatusGrid";
-import AlertsWidget from "../Components/dashboard/AlertsWidget";
+import AlertsWidgets from "../Components/dashboard/AlertsWidgets";
 import OperatorDetailModal from "../Components/dashboard/OperatorDetailModal";
 
 export default function Dashboard() {
@@ -99,7 +99,7 @@ export default function Dashboard() {
           </div>
 
           <div>
-            <AlertsWidget alerts={alerts.slice(0, 6)} />
+            <AlertsWidgets alerts={alerts.slice(0, 6)} />
           </div>
         </div>
 

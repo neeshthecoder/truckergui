@@ -1,10 +1,10 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "../../Components/ui/card";
+import { Badge } from "../../Components/ui/badge";
 import { AlertTriangle, AlertCircle, Info, ExternalLink } from "lucide-react";
-import { format } from "date-fns";
+import { format, isValid } from "date-fns";
 import { Link } from "react-router-dom";
-import { createPageUrl } from "@/utils";
+import { createPageUrl } from "../../utils";
 
 export default function AlertsWidget({ alerts }) {
   const getSeverityIcon = (severity) => {
@@ -63,7 +63,10 @@ export default function AlertsWidget({ alerts }) {
                     <p className="font-bold text-xs text-white uppercase tracking-wide mb-1">{alert.operator_name}</p>
                     <p className="text-xs text-zinc-400">{alert.message}</p>
                     <p className="text-[10px] text-zinc-600 mt-2 uppercase tracking-wider mono">
-                      {format(new Date(alert.created_date), 'HH:mm:ss')}
+                      {(() => {
+                        const d = alert.created_date ? new Date(alert.created_date) : null;
+                        return d && isValid(d) ? format(d, 'HH:mm:ss') : '—';
+                      })()}
                     </p>
                   </div>
                 </div>

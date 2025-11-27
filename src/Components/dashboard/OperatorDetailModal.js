@@ -1,10 +1,10 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
+import { Card, CardContent, CardHeader, CardTitle } from "../../Components/ui/card";
+import { Badge } from "../../Components/ui/badge";
+import { Button } from "../../Components/ui/button";
+import { Progress } from "../../Components/ui/progress";
 import { X, Activity, Clock, Zap, Brain, TrendingDown, Target, AlertCircle, FileText, TrendingUp } from "lucide-react";
-import { format } from "date-fns";
+import { formatDateSafe } from "../../utils";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from "recharts";
 
 export default function OperatorDetailModal({ session, onClose }) {
@@ -79,7 +79,7 @@ export default function OperatorDetailModal({ session, onClose }) {
                 <span className="text-[10px] text-zinc-500 uppercase tracking-wider mono">SESSION START</span>
               </div>
               <p className="text-sm font-bold text-white mono">
-                {format(new Date(session.session_start), 'MMM d, HH:mm')}
+                {formatDateSafe(session.session_start, 'MMM d, HH:mm')}
               </p>
             </div>
             <div className="p-4 bg-black border border-zinc-800 rounded">

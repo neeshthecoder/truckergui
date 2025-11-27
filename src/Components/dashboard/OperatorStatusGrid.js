@@ -1,11 +1,11 @@
 import React from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardTitle } from "../../Components/ui/card";
+import { Badge } from "../../Components/ui/badge";
 import { Activity, Clock, Zap, Brain, TrendingUp, ExternalLink } from "lucide-react";
-import { Progress } from "@/components/ui/progress";
+import { Progress } from "../../Components/ui/progress";
 import { LineChart, Line, ResponsiveContainer } from "recharts";
 import { Link } from "react-router-dom";
-import { createPageUrl } from "@/utils";
+import { createPageUrl } from "../../utils";
 
 export default function OperatorStatusGrid({ sessions, onSessionClick }) {
   const getPerformanceColor = (rating) => {

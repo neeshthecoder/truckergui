@@ -17,3 +17,33 @@ export function createPageUrl(pageName) {
   return queryString ? `${basePath}?${queryString}` : basePath;
 }
 
+// Safe date formatter wrapper used across the UI to avoid runtime
+// exceptions when incoming date values are missing or malformed.
+import { format, isValid } from 'date-fns';
+
+export function formatDateSafe(value, fmt = 'MMM d, yyyy HH:mm', fallback = '—') {
+  if (value === undefined || value === null || value === '') return fallback;
+
+  let d;
+  if (value instanceof Date) {
+    d = value;
+  } else if (typeof value === 'number') {
+    d = new Date(value);
+  } else if (typeof value === 'string') {
+    // Let Date parse ISO strings and other common formats; this may still
+    // produce an invalid date for malformed input, which we check below.
+    d = new Date(value);
+  } else {
+    // Unknown type, try constructing Date anyway
+    d = new Date(value);
+  }
+
+  if (!isValid(d)) return fallback;
+
+  try {
+    return format(d, fmt);
+  } catch (e) {
+    return fallback;
+  }
+}
+

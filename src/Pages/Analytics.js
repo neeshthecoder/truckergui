@@ -1,8 +1,8 @@
 import React from "react";
-import { sessionsMockApi } from "@/api/sessionsMockApi"; 
-import { operatorsMockApi } from "@/api/operatorsMockApi";
+import { sessionsMockApi } from "../api/sessionsMockApi"; 
+import { operatorsMockApi } from "../api/operatorsMockApi";
 import { useQuery } from "@tanstack/react-query";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "../Components/ui/card";
 import { BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend, PieChart, Pie, Cell } from "recharts";
 import { BarChart3, TrendingUp, Users, Lightbulb, FlaskConical, ClipboardList } from "lucide-react";
 

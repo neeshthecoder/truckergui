@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { alertsMockApi } from "@/api/alertsMockApi";
+import { alertsMockApi } from "../api/alertsMockApi";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../Components/ui/card";
+import { Badge } from "../Components/ui/badge";
+import { Button } from "../Components/ui/button";
 import { AlertTriangle, CheckCircle, AlertCircle, Info } from "lucide-react";
-import { format } from "date-fns";
+import { formatDateSafe } from "../utils";
 
 export default function Alerts() {
   const [filter, setFilter] = useState('active');
@@ -34,7 +34,7 @@ export default function Alerts() {
       id: alert.id,
       data: {
         status: 'acknowledged',
-        acknowledged_by: user.email,
+        acknowledged_by: acknowledgedByUser,
         acknowledged_at: new Date().toISOString(),
       }
     });
@@ -148,7 +148,7 @@ export default function Alerts() {
                               </p>
                             )}
                             <div className="flex items-center gap-4 mt-3 text-xs text-zinc-600 mono">
-                              <span>{format(new Date(alert.created_date), 'MMM d, yyyy HH:mm')}</span>
+                              <span>{formatDateSafe(alert.created_date, 'MMM d, yyyy HH:mm')}</span>
                               {alert.acknowledged_by && (
                                 <span className="text-green-400">
                                   Acknowledged by {alert.acknowledged_by}

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { operatorsMockApi } from "@/api/operatorsMockApi";
-import { sessionsMockApi } from "@/api/sessionsMockApi";
-import { mockLLM } from "@/api/mockAI";
+import { operatorsMockApi } from "../api/operatorsMockApi";
+import { sessionsMockApi } from "../api/sessionsMockApi";
+import { mockLLM } from "../api/mockAI";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../Components/ui/card";
+import { Badge } from "../Components/ui/badge";
+import { Button } from "../Components/ui/button";
 import { Sparkles, Brain, Shield, AlertTriangle, TrendingUp, Users, RefreshCw } from "lucide-react";
-import { Progress } from "@/components/ui/progress";
+import { Progress } from "../Components/ui/progress";
 
 export default function AIRecommendations() {
   const [recommendations, setRecommendations] = useState([]);

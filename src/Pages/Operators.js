@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import { operatorsMockApi } from "@/api/operatorsMockApi";import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { operatorsMockApi } from "../api/operatorsMockApi";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { Button } from "../Components/ui/button";
+import { Input } from "../Components/ui/input";
+import { Card, CardContent, CardHeader, CardTitle } from "../Components/ui/card";
+import { Badge } from "../Components/ui/badge";
 import { Plus, Search, Users, User, Mail, Phone, Pencil, Trash2 } from "lucide-react";
 
-import OperatorForm from "../components/operators/OperatorForm";
+import OperatorForm from "../Components/operators/OperatorForm";
 
 export default function Operators() {
   const [showForm, setShowForm] = useState(false);

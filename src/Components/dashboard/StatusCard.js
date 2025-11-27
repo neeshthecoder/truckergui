@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader } from "../../Components/ui/card";
+import { Badge } from "../../Components/ui/badge";
 import { TrendingUp, TrendingDown } from "lucide-react";
 
 export default function StatusCard({ title, value, total, icon: Icon, color, trend, critical }) {

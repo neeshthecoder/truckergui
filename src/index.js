@@ -7,7 +7,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import './index.css'; // Assuming this file exists for global styles
 
 // Layout (Note: path changed to match your structure: 'Layout.js' in root src directory)
-import Layout from './Layout.js'; 
+import Layout from './Layout.js';
+
 
 // Pages (Note: paths changed to match your structure: 'Pages/...' directory)
 import Dashboard from './Pages/Dashboard.js';

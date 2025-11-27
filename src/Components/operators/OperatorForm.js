@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "../../Components/ui/card";
+import { Button } from "../../Components/ui/button";
+import { Input } from "../../Components/ui/input";
+import { Label } from "../../Components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../../Components/ui/select";
 import { X, Save } from "lucide-react";
 
 export default function OperatorForm({ operator, onSubmit, onCancel, isSubmitting }) {
